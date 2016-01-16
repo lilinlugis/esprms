@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+
+	<title><%= title %></title>
+
+	<link rel="stylesheet" type="text/css" href="/bootstrap/css/bootstrap.min.css">
+	<script type="text/javascript" src="/jquery/jquery-1.11.3.min.js"></script>	
+	<link rel="stylesheet" href="/css/nav_2016.min.css"/>
+
+ 	<%- header %>
+</head>
+<body>
+	<div class="esprms_nav_top black">
+		<ul>
+			<li><a href="/" target="_blank">首页</a></li>
+			<li><a href="blog/index.jsp" target="_blank">博客</a></li>
+			<li><a href="weekly/index.jsp" target="_blank">反馈</a></li>
+			<li><a href="project/index.jsp" target="_blank">项目</a></li>
+			<li><a href="resource/index.jsp" target="_blank">资源</a></li>
+			<li><a href="forum/index.jsp" target="_blank">论坛</a></li>
+			<li class="more"><a href="javascript:void(0);">更多</a></li>
+		</ul>
+		
+		<p class="hidden-xs">
+			<span id="hasnotlogin" class="red">
+				<a href="login.jsp" target="_top">登录&nbsp;&nbsp;&nbsp;&nbsp;|</a>
+			</span>
+			<span id="haslogined" style="display:none;">
+				欢迎你&nbsp;&nbsp;<span id="loginusername"><sec:authentication property="name"/></span>
+				<a href="logout.action" target="_top">退出&nbsp;&nbsp;&nbsp;&nbsp; |</a>
+			</span>
+			
+			<a href="space/index.jsp" target="_blank">空间&nbsp;&nbsp;&nbsp;&nbsp;|</a>
+			<a href="regist.jsp" target="_top">注册&nbsp;&nbsp;&nbsp;&nbsp;|</a>
+			<a href="faq.html" target="_blank">帮助</a>
+		</p>
+	</div>
+	<div class="container innerbanner">
+	<div class="pull-right">
+		<form action="/blog/search" class="form-inline" method="get" onsubmit="return check_up(this);">
+		<div class="input-group">
+			<span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
+	      	<input type="text" class="form-control" maxlength="50" id="tagff"  name="q" placeholder="我要搜...">
+	      	<span class="input-group-btn">
+	        	<button class="btn btn-default" type="button">搜索!</button>
+	      	</span>
+	    </div><!-- /input-group -->
+		</form>
+	</div>
+</div>
+<!-- nav -->
+<div class="container">
+	<nav class="navbar navbar-inverse">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand logo" href="index.jsp">
+          	<img src="images/logo_blog.png"/>
+          </a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="/blog/index.jsp" title="博客频道首页">首页</a></li>
+            <li><a href="blog/column.jsp">专栏</a></li>
+            <li><a href="blog/order.jsp">排行</a></li>
+            <li><a href="#">研发</a></li>
+            <li><a href="#">移动</a></li>
+			<li><a href="#">管理</a></li>
+			<li><a >互联网</a></li>
+			<li><a >我的博客</a></li>
+            <li class="dropdown">
+              <a href="http://www.esprms.com:80/project/test/index.jsp" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">语言 <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+              	<li class="dropdown-header">后端</li>
+                <li><a href="#">Java</a></li>
+                <li><a href="#">C#</a></li>
+                <li><a href="#">C++</a></li>
+                <li role="separator" class="divider"></li>
+                <li class="dropdown-header">前端</li>
+                <li><a href="#">JavaScript</a></li>
+                <li><a href="#">HTML&CSS</a></li>
+                <li role="separator" class="divider"></li>
+                <li class="dropdown-header">移动</li>
+                <li><a href="#">Object C</a></li>
+                <li><a href="#">Android Java</a></li>
+                <li><a href="#">WebAPP</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="http://www.esprms.com:80/project/test/index.jsp" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">框架 <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+              	<li class="dropdown-header">后端</li>
+                <li><a href="#">Struts</a></li>
+                <li><a href="#">Spring</a></li>
+                <li><a href="#">Hibernate</a></li>
+                <li><a href="#">Memecache</a></li>
+                <li role="separator" class="divider"></li>
+                <li class="dropdown-header">前端</li>
+                <li><a href="#">Bootstrap</a></li>
+                <li><a href="#">jQuery EasyUI</a></li>
+                <li><a href="#">Node JS</a></li>
+                <li role="separator" class="divider"></li>
+                <li class="dropdown-header">移动</li>
+                <li><a href="#">AF Network</a></li>
+                <li><a href="#">Android Java</a></li>
+                <li><a href="#">jQuery Mobile</a></li>
+              </ul>
+            </li>
+            <li><a href="blog/help.html">帮助</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+    </nav>
+   </div>
+	
+	<%- body %>
+	<div class="clearfix"></div>
+	<div id="footer">
+		<div class="container">
+			<p class="credit">
+				<a href="/esprms/introduce.html" target="_blank">系统简介|</a>
+				<a href="/esprms/right.html"  target="_blank">版权声明|</a>
+				<a href="/esprms/reporterror.html"  target="_blank">问题报告</a>
+				<br/>
+				<a>Copyright © 2012 - 2013  lilinlu.All Rights Reserved.</a>
+			</p>
+		</div>
+	</div>
+	<script type="text/javascript" src="/public/js/bootstrap/js/bootstrap.min.js"></script>
+</body>
+</html>
